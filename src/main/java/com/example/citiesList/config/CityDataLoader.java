@@ -1,7 +1,7 @@
 package com.example.citiesList.config;
 
 import com.example.citiesList.model.City;
-import com.example.citiesList.repository.CityRepository;
+import com.example.citiesList.repository.InMemoryCityRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -19,10 +19,10 @@ public class CityDataLoader implements InitializingBean {
     @Value("classpath:cities.csv")
     private Resource citiesFile;
 
-    private final CityRepository cityRepository;
+    private final InMemoryCityRepository inMemoryCityRepository;
 
-    public CityDataLoader(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
+    public CityDataLoader(InMemoryCityRepository inMemoryCityRepository) {
+        this.inMemoryCityRepository = inMemoryCityRepository;
     }
 
    @Override
@@ -38,7 +38,7 @@ public class CityDataLoader implements InitializingBean {
                     .map(data -> new City(data[0].trim(), data[1].trim()))
                     .collect(Collectors.toList());
 
-            cityRepository.saveAll(cities);
+            inMemoryCityRepository.saveAll(cities);
         } catch (Exception e) {
             e.printStackTrace();
         }
