@@ -8,7 +8,8 @@ public class City {
 
     public City() {}
 
-    public City(String name, String pictureUrl) {
+    public City(Long id, String name, String pictureUrl) {
+        this.id = id;
         this.name = name;
         this.pictureUrl = pictureUrl;
     }

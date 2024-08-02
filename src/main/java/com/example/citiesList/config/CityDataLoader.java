@@ -34,8 +34,8 @@ public class CityDataLoader implements InitializingBean {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(citiesFile.getInputStream(), StandardCharsets.UTF_8))) {
             List<City> cities = reader.lines()
                     .map(line -> line.split(","))
-                    .filter(data -> data.length >= 2)
-                    .map(data -> new City(data[0].trim(), data[1].trim()))
+                    .filter(data -> data[0] != null)
+                    .map(data -> new City(Long.valueOf(data[0].trim()), data[1].trim(), data[2].trim()))
                     .collect(Collectors.toList());
 
             inMemoryCityRepository.saveAll(cities);

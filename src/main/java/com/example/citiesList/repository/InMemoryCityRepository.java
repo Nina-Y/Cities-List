@@ -4,13 +4,11 @@ import com.example.citiesList.model.City;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class InMemoryCityRepository implements CityRepository {
 
     private final List<City> cities = new ArrayList<>();
-    private static final AtomicLong counter = new AtomicLong();
 
     @Override
     public List<City> findAll() {
@@ -33,7 +31,6 @@ public class InMemoryCityRepository implements CityRepository {
     @Override
     public void saveAll(List<City> cities) {
         this.cities.clear();
-        cities.forEach(city -> city.setId(counter.incrementAndGet()));
         this.cities.addAll(cities);
     }
 }
