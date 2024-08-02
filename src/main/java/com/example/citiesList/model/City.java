@@ -1,22 +1,15 @@
 package com.example.citiesList.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
 public class City {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String pictureUrl;
 
     public City() {}
 
-    public City(String name, String pictureUrl) {
+    public City(Long id, String name, String pictureUrl) {
+        this.id = id;
         this.name = name;
         this.pictureUrl = pictureUrl;
     }
