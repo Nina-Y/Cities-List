@@ -1,1 +1,1 @@
-Application under development
+This Spring Boot application allows user to load the full list of cities with names and corresponding photos, load single city by id, load paginated list of cities, initial list of cities will be populated using the attached csv file and loaded in application memory on start-up.
